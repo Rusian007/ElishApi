@@ -1,0 +1,106 @@
+
+All of the inputs are given as formdata
+
+POST /get-auth-token/
+
+input
+{
+    username : "username",
+    password : "password"
+}
+
+output
+{
+    "token": "c300bdf566a627e57f040b9a66a0333e1d62f075"
+}
+
+
+GET /routes/routes/
+
+header
+Authorization : "Token __auth__token__"
+
+
+input 
+
+
+output
+
+{
+    "list_of_routes": [
+        {
+            "id": 1,
+            "starting_point_name": "gaja",
+            "ending_point_name": "fafa",
+            "fair": 30,
+            "distance": null,
+            "starting_point": 1,
+            "ending_point": 2
+        },
+        {
+            "id": 2,
+            "starting_point_name": "fafa",
+            "ending_point_name": "gaja",
+            "fair": 25,
+            "distance": null,
+            "starting_point": 2,
+            "ending_point": 1
+        }
+    ]
+}
+
+
+GET /routes/points/
+
+header
+Authorization : "Token __auth__token__"
+
+input
+
+output
+{
+    "list_of_points": [
+        {
+            "name": "gaja",
+            "latitude": null,
+            "longitude": null
+        },
+        {
+            "name": "fafa",
+            "latitude": null,
+            "longitude": "12.450000"
+        }
+    ]
+}
+
+
+POST /ticket/ticket/
+
+header
+Authorization : "Token __auth__token__"
+
+input
+
+{
+    route_id : "1",
+    seats : "2"
+}
+
+
+output
+
+{
+    "ticket": {
+        "id": 3,
+        "starting_point": "gaja",
+        "ending_point": "fafa",
+        "date": "2023-02-23",
+        "time": "21:14:12.498109",
+        "fair": 60,
+        "discount": 0,
+        "booked_by": "yasin",
+        "counterman_metadata": {
+            "phone_no": "01760468700"
+        }
+    }
+}
