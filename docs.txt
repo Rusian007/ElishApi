@@ -74,6 +74,42 @@ output
 }
 
 
+GET /routes/get_valid_routes/
+
+header
+Authorization : "Token __auth__token__"
+
+input
+
+{
+    starting_point_id : "1"
+}
+
+output
+{
+    "list_of_routes": [
+        {
+            "id": 1,
+            "starting_point_name": "gaja",
+            "ending_point_name": "fafa",
+            "fair": 30,
+            "distance": null,
+            "starting_point": 1,
+            "ending_point": 2
+        },
+        {
+            "id": 3,
+            "starting_point_name": "gaja",
+            "ending_point_name": "MAWA",
+            "fair": 50,
+            "distance": null,
+            "starting_point": 1,
+            "ending_point": 4
+        }
+    ]
+}
+
+
 POST /ticket/ticket/
 
 header
@@ -103,4 +139,35 @@ output
             "phone_no": "01760468700"
         }
     }
+}
+
+
+GET /ticket/sells (Get ticket sells for a particular date for the current logged counterman)
+
+header
+Authorization : "Token __auth__token__"
+
+query param 
+ - date
+
+exaple query
+ - http://127.0.0.1:8000/ticket/sells/?date=2023-04-08 
+
+output
+{
+    "tickets": [
+        {
+            "id": 4,
+            "starting_point": "dhaka",
+            "ending_point": "mirpur",
+            "date": "2023-04-08",
+            "time": "16:42:55.483450",
+            "fair": 40,
+            "discount": 10,
+            "booked_by": "yasin",
+            "counterman_metadata": {
+                "name": "yasin"
+            }
+        }
+    ]
 }

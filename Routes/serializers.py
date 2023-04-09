@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+
 class PointSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     latitude = serializers.DecimalField(max_digits=9, decimal_places=6)

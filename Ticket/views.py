@@ -36,3 +36,15 @@ class TicketView(APIView):
             'ticket' : ser.data
         })
 
+@api_view()
+def sells_view(request):
+    if request.user.is_authenticated == False:
+        return Response({"error": "Unathorized"})
+
+    date = request.GET.get("date", "")
+
+    ticket_objs = ShortRouteTicket.objects.filter(booked_by=request.user.username, date=date)
+    return Response({
+        'tickets' : TicketSerializer(ticket_objs, many=True).data
+    })
+    
